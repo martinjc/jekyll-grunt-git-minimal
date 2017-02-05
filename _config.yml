@@ -1,0 +1,29 @@
+title: Default Website Setup
+email: chorleymj@cf.ac.uk
+description: > #
+        A simple jekyll site, using grunt for build and deploy to github
+
+
+# Grunt handles images and assets.
+exclude: ['img', 'css', 'js', 'fonts',
+          '**.png', '**.jpg', '**.jpeg', '**.gif', '**.webp', '**.svg', '**.ico']
+
+# _config.build.yml sets future and show_drafts to false on `grunt build`
+future: true
+show_drafts: true
+
+# Markdown library
+markdown: kramdown
+
+# Site settings
+baseurl: "/jekyll-grunt-git-minimal"
+
+# Varibles
+sitename: "Jekyll Grunt Git Minimal"
+
+url: "https://martinjc.github.io" # the base hostname & protocol for your site
+twitter_username: martinjc
+github_username:  martinjc
+
+github_repository_url: "martinjc/jekyll-grunt-git-minimal.git"
+github_repository_name: jekyll-grunt-git-minimal
