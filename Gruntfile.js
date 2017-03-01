@@ -10,11 +10,14 @@ module.exports = function(grunt) {
     // Load all Grunt tasks
     require('jit-grunt')(grunt, {buildcontrol: 'grunt-build-control'});
 
+    var pkg = require('./package.json');
+
     grunt.initConfig({
         app: {
             source: 'app',
             dist: 'dist',
-            baseurl: 'jekyll-grunt-git-minimal'
+            baseurl: 'jekyll-grunt-git-minimal',
+            repository: '<%= pkg.repository.url %>'
         },
         watch: {
             sass: {
@@ -298,7 +301,7 @@ module.exports = function(grunt) {
             dist: {
                 options: {
                     dir: '<%= app.dist %>/<%= app.baseurl %>',
-                    remote: 'git@github.com:martinjc/jekyll-grunt-git-minimal.git',
+                    remote: '<%= app.repository =>',
                     branch: 'gh-pages',
                     commit: true,
                     push: true,
@@ -319,9 +322,6 @@ module.exports = function(grunt) {
           ]
         }
     });
-
-    grunt.loadNpmTasks('grunt-todo');
-    grunt.loadNpmTasks('grunt-bower-concat')
 
     // Define Tasks
     grunt.registerTask('serve', function(target) {
