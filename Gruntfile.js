@@ -322,9 +322,6 @@ module.exports = function(grunt) {
         }
     });
 
-    grunt.loadNpmTasks('grunt-todo');
-    grunt.loadNpmTasks('grunt-bower-concat');
-
     // Define Tasks
     grunt.registerTask('serve', function(target) {
         if (target === 'dist') {
