@@ -10,14 +10,13 @@ module.exports = function(grunt) {
     // Load all Grunt tasks
     require('jit-grunt')(grunt, {buildcontrol: 'grunt-build-control'});
 
-    var pkg = require('./package.json');
-
     grunt.initConfig({
+        pkg: grunt.file.readJSON('package.json'),
         app: {
             source: 'app',
             dist: 'dist',
             baseurl: 'jekyll-grunt-git-minimal',
-            repository: '<%= pkg.repository.url %>'
+            remote: '<%= pkg.repository.remote %>'
         },
         watch: {
             sass: {
@@ -122,7 +121,7 @@ module.exports = function(grunt) {
             dist: {
                 dest: {
                     js: '.tmp/<%= app.baseurl %>/js/bowervendor.js',
-                    css: '<%= app.dist %>/<%= app.baseurl %>/css/bowervendor.css',
+                    css: '<%= app.dist %>/<%= app.baseurl %>/css/bowervendor.css'
                 }
             }
         },
@@ -301,7 +300,7 @@ module.exports = function(grunt) {
             dist: {
                 options: {
                     dir: '<%= app.dist %>/<%= app.baseurl %>',
-                    remote: '<%= app.repository =>',
+                    remote: '<%= app.remote %>',
                     branch: 'gh-pages',
                     commit: true,
                     push: true,
@@ -322,6 +321,9 @@ module.exports = function(grunt) {
           ]
         }
     });
+
+    grunt.loadNpmTasks('grunt-todo');
+    grunt.loadNpmTasks('grunt-bower-concat');
 
     // Define Tasks
     grunt.registerTask('serve', function(target) {

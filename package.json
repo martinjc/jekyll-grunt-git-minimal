@@ -28,14 +28,15 @@
   "scripts": {
     "prestart": "npm install",
     "postinstall": "bower update",
-    "start": "grunt serve"  
+    "start": "grunt serve"
   },
   "engines": {
     "node": ">=0.10.0"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/martinjc/jekyll-grunt-git-minimal.git"
+    "url": "git+https://github.com/martinjc/jekyll-grunt-git-minimal.git",
+    "remote": "git@github.com:martinjc/jekyll-grunt-git-minimal.git"
   },
   "license": "MIT",
   "bugs": {
