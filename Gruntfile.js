@@ -109,6 +109,20 @@ module.exports = function(grunt) {
                 }
             }
         },
+        bower_concat: {
+            server: {
+                dest: {
+                    js: '.tmp/<%= app.baseurl %>/js/bowervendor.js',
+                    css: '.tmp/<%= app.baseurl %>/css/bowervendor.css'
+                }
+            },
+            dist: {
+                dest: {
+                    js: '.tmp/<%= app.baseurl %>/js/bowervendor.js',
+                    css: '<%= app.dist %>/<%= app.baseurl %>/css/bowervendor.css',
+                }
+            }
+        },
         htmlmin: {
             dist: {
                 options: {
@@ -137,7 +151,8 @@ module.exports = function(grunt) {
                     sourceMap: true,
                 },
                 files: {
-                    '.tmp/<%= app.baseurl %>/js/main.js': ['<%= app.source %>/_assets/js/**/*.js']
+                    '.tmp/<%= app.baseurl %>/js/main.js': ['<%= app.source %>/_assets/js/**/*.js'],
+                    '.tmp/<%= app.baseurl %>/js/bowervendor.js': '.tmp/<%= app.baseurl %>/js/bowervendor.js'
                 }
             },
             dist: {
@@ -147,7 +162,8 @@ module.exports = function(grunt) {
                     report: 'min'
                 },
                 files: {
-                    '<%= app.dist %>/<%= app.baseurl %>/js/main.js': ['<%= app.source %>/_assets/js/**/*.js']
+                    '<%= app.dist %>/<%= app.baseurl %>/js/main.js': ['<%= app.source %>/_assets/js/**/*.js'],
+                    '<%= app.dist %>/<%= app.baseurl %>/js/bowervendor.js': '.tmp/<%= app.baseurl %>/js/bowervendor.js'
                 }
             }
         },
@@ -305,6 +321,7 @@ module.exports = function(grunt) {
     });
 
     grunt.loadNpmTasks('grunt-todo');
+    grunt.loadNpmTasks('grunt-bower-concat')
 
     // Define Tasks
     grunt.registerTask('serve', function(target) {
@@ -316,6 +333,7 @@ module.exports = function(grunt) {
             'todo',
             'clean:server',
             'jekyll:server',
+            'bower_concat:server',
             'copy:server',
             'sass:server',
             'autoprefixer:server',
@@ -334,6 +352,7 @@ module.exports = function(grunt) {
         'todo',
         'clean:dist',
         'jekyll:dist',
+        'bower_concat:dist',
         'imagemin',
         'svgmin',
         'sass:dist',

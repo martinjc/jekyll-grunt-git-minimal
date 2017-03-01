@@ -1,0 +1,21 @@
+{
+  "name": "DefaultWebsiteSetup",
+  "description": "A simple jekyll site, using grunt for build and deploy to github",
+  "main": "",
+  "authors": [
+    "Martin Chorley"
+  ],
+  "license": "MIT",
+  "homepage": "https://github.com/martinjc/jekyll-grunt-git-minimal",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "reveal.js": "^3.4.1"
+  }
+}
